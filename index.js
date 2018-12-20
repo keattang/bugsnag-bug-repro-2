@@ -4,6 +4,9 @@ const bugsnag = Bugsnag({
     apiKey: 'my-api-key',
 });
 
-const theFunctionIWantToTest = () => true;
+const theFunctionIWantToTest = () => (
+    typeof window !== 'undefined' && // We need a browser environment
+    bugsnag !== undefined
+);
 
 module.exports = theFunctionIWantToTest;
